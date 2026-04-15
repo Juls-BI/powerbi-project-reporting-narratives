@@ -1,1 +1,85 @@
 
+DEFINE
+/// Project_Status_Narrative
+/// Generates a concise project status narrative based on schedule and cost variance.
+/// Provides a clear on‑track statement when both cost and schedule are within tolerance
+/// and explains phase‑driven causes when not.
+FUNCTION Project_Status_Narrative = (
+    ScheduleVarPct: DOUBLE,
+    CostVarPct: DOUBLE,
+    Threshold: DOUBLE,
+    SchedulePhaseText: STRING,
+    CostPhaseText: STRING,
+    SPI: DOUBLE,
+    CPI: DOUBLE
+) =>
+
+/* Determine on‑track status */
+VAR IsScheduleOnTrack =
+    ABS ( ScheduleVarPct ) <= Threshold
+
+VAR IsCostOnTrack =
+    ABS ( CostVarPct ) <= Threshold
+
+/* Schedule variance text */
+VAR ScheduleStatusText =
+    SWITCH (
+        TRUE (),
+        ScheduleVarPct > Threshold, "ahead of plan",
+        ScheduleVarPct < -Threshold, "behind plan",
+        BLANK ()
+    )
+
+VAR ScheduleVarText =
+    FORMAT ( ABS ( ScheduleVarPct ), "0%" )
+
+/* Cost variance text */
+VAR CostVarText =
+    FORMAT ( ABS ( CostVarPct ), "0%" )
+
+/* Optional performance indicators */
+VAR PerformanceText =
+    IF (
+        NOT ISBLANK ( SPI ) || NOT ISBLANK ( CPI ),
+        " (SPI: "
+            & IF ( NOT ISBLANK ( SPI ), FORMAT ( SPI, "0.00" ), "N/A" )
+            & ", CPI: "
+            & IF ( NOT ISBLANK ( CPI ), FORMAT ( CPI, "0.00" ), "N/A" )
+            & ")",
+        ""
+    )
+
+RETURN
+IF (
+    IsScheduleOnTrack && IsCostOnTrack,
+    "This project is on schedule and costs are within forecast"
+        & PerformanceText & ".",
+    "This project is "
+        & IF (
+            NOT IsScheduleOnTrack,
+            ScheduleVarText & " " & ScheduleStatusText,
+            "on schedule"
+        )
+        & IF (
+            NOT IsCostOnTrack,
+            ", with costs "
+                & IF ( CostVarPct > 0, "over forecast by ", "under forecast by " )
+                & CostVarText,
+            ""
+        )
+        & IF (
+            NOT IsScheduleOnTrack
+                && NOT ISBLANK ( SchedulePhaseText ),
+            ", driven by delays in " & SchedulePhaseText,
+            ""
+        )
+        & IF (
+            NOT IsCostOnTrack
+                && CostVarPct > 0
+                && NOT ISBLANK ( CostPhaseText ),
+            ", with cost pressures primarily in " & CostPhaseText,
+            ""
+        )
+        & PerformanceText
+        & "."
+)
