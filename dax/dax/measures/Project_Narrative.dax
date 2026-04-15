@@ -1,0 +1,29 @@
+/// Project Narrative
+/// Combines reporting context and project status into a single narrative.
+/// Optional parameters are explicitly passed as BLANK() to keep the pattern clear
+/// and allow future extensions without refactoring.
+
+Project Narrative :=
+VAR _Context =
+    Project_Context_Narrative (
+        BLANK (),              -- Project (optional: omit when Project is already on rows)
+        [Reporting Date],       -- Required
+        [Schedule Version],     -- Required
+        BLANK (),              -- Programme (optional)
+        BLANK (),              -- Baseline (optional)
+        BLANK ()               -- Control Cycle (optional)
+    )
+
+VAR _Status =
+    Project_Status_Narrative (
+        [Schedule Variance %],     -- Required: schedule variance
+        [Cost Variance %],         -- Required: cost variance
+        0.05,                      -- Threshold (5%)
+        [Worst Schedule Phase],    -- Required: schedule driver
+        [Worst Cost Phase],        -- Required: cost driver
+        BLANK (),                  -- SPI (optional, not currently available)
+        BLANK ()                   -- CPI (optional, not currently available)
+    )
+
+RETURN
+_Context & " " & _Status
