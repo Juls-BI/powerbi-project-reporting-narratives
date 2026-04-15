@@ -1,4 +1,5 @@
 # powerbi-project-reporting-narratives
+
 ![Power BI](https://img.shields.io/badge/Power%20BI-DAX-yellow?logo=powerbi&logoColor=white)
 ![DAX](https://img.shields.io/badge/DAX-User%20Defined%20Functions-blue)
 ![Project Controls](https://img.shields.io/badge/Project%20Controls-PMO%20Focused-success)
@@ -6,41 +7,81 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Stable-brightgreen)
 
-A collection of DAX User‑Defined Functions (UDFs) and supporting measures designed to generate structured, professional project reporting narratives in Power BI.
-This repository focuses on project controls use cases, helping teams explain what the data means, not just what the numbers are.
+A collection of **DAX User‑Defined Functions (UDFs)** and supporting measures designed to generate **structured, professional project reporting narratives** in Power BI.
 
-### Purpose
+This repository focuses on **project controls use cases**, helping teams explain *what the data means*, not just *what the numbers are*.
+
+---
+
+## Purpose
+
 Project dashboards often present metrics without context, leaving stakeholders asking:
 
-What reporting period does this relate to?
-Which version or forecast is being used?
-Is the project actually on track?
-What is driving schedule delays or cost overruns?
+- What reporting period does this relate to?
+- Which version or forecast is being used?
+- Is the project actually on track?
+- What is driving schedule delays or cost overruns?
 
-This repository addresses that gap by providing standardised narrative patterns that:
+This repository addresses that gap by providing **standardised narrative patterns** that:
 
-Clearly state reporting context
-Explain schedule and cost performance using thresholds
-Identify which project phases drive variance
-Scale from single‑project to portfolio views
+- Clearly state reporting context  
+- Explain schedule and cost performance using thresholds  
+- Identify which project phases are driving variance  
+- Scale from single‑project to portfolio views  
 
+---
 
-### What’s Included
+## What’s Included
 
-DAX User‑Defined Functions for:
+### DAX User‑Defined Functions
 
 - Reporting context narratives
 - Schedule and cost status narratives
 
-Supporting measures for:
+### Supporting Measures
 
 - Schedule variance
 - Cost variance
-- Worst‑performing phases
+- Worst‑performing schedule and cost phases
 - A single orchestration measure that combines context and status into a final narrative
 
-All narrative logic is separated from calculation logic to keep models auditable and maintainable.
+All narrative logic is **deliberately separated from calculation logic** to keep models auditable, transparent, and maintainable.
 
+---
+
+## Power BI Example and Sample Files
+
+This repository includes a **ready‑to‑use Power BI example** and **sample datasets** to help you test and understand the narrative patterns.
+
+### Power BI Example
+
+- `samples/ProjectNarrativeUDF.zip`
+
+A zipped Power BI example demonstrating:
+- Narrative UDF usage
+- Required and optional measures
+- Project‑level and portfolio‑level narratives
+- Schedule and cost performance commentary
+
+Unzip the file and open the `.pbix` in Power BI Desktop to explore the implementation.
+
+### Sample Data Files
+
+- `samples/Sample_ProjectSchedule.xlsx`  
+  Example project schedule data by project and phase, suitable for testing:
+  - Schedule variance
+  - Worst schedule phase
+  - Schedule‑driven narrative logic
+
+- `samples/Sample_ProjectCosts.xlsx`  
+  Example project cost data by project and phase, suitable for testing:
+  - Cost variance
+  - Worst cost phase
+  - Cost‑driven narrative logic
+
+These files can be imported directly into Power BI and mapped to your model to recreate the narrative outputs shown in the example.
+
+---
 
 ### Example Output
 
