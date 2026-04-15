@@ -91,35 +91,47 @@ This project is 18% behind plan, with costs over forecast by 7%, driven by delay
 ![Project Narrative example](assets/ProjectNarrativeSample.png)
 
 
-### Required Measures (High Level)
+## Required Measures (High Level)
+
 To use the patterns in this repository, your model will typically include:
 
-- Reporting Date
-- Schedule Version
-- Schedule Variance %
-- Cost Variance %
-- Worst Schedule Phase
-- Worst Cost Phase
+- Reporting Date  
+- Schedule Version  
+- Schedule Variance %  
+- Cost Variance %  
+- Worst Schedule Phase  
+- Worst Cost Phase  
 
 Optional measures (supported but not required):
-- SPI
-- CPI
 
+- SPI  
+- CPI  
 
-### Intended Use Cases
+---
 
-Project status tables (project on rows)
-Portfolio summary views
-Management commentary cards
-Tooltips and report headers
-Automated monthly reporting packs
+## Intended Use Cases
 
+- Project status tables (project on rows)
+- Portfolio summary views
+- Management commentary cards
+- Tooltips and report headers
+- Automated monthly reporting packs
 
-### Notes on Scope
-These patterns focus on narrative generation, not on defining how schedule or cost variance is calculated. They are designed to sit on top of your existing project controls model.
+---
 
-### License
+## Notes on Scope
+
+These patterns focus on **narrative generation**, not on defining how schedule or cost variance is calculated.  
+They are designed to sit **on top of your existing project controls model**.
+
+---
+
+## License
+
 MIT License — free to use, adapt, and extend.
 
-### Acknowledgements
+---
+
+## Acknowledgements
+
 Inspired by real‑world PMO and project controls reporting challenges, where clarity, consistency, and auditability matter as much as accuracy.
