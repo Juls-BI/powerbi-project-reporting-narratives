@@ -47,6 +47,8 @@ All narrative logic is separated from calculation logic to keep models auditable
 Reporting context: Reporting date 31 Mar 2025, file version Forecast v1.
 This project is 18% behind plan, with costs over forecast by 7%, driven by delays in Procurement, with cost pressures primarily in Execution.
 
+![Project Narrative example](assets/ProjectNarrativeSample.png)
+
 
 ### Required Measures (High Level)
 To use the patterns in this repository, your model will typically include:
