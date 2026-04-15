@@ -1,0 +1,43 @@
+DEFINE
+/// Project_Context_Narrative
+/// Generates a structured project reporting narrative.
+/// Adapts wording when Project context is already implied (e.g. Project on rows)
+FUNCTION Project_Context_Narrative = (
+    ProjectText: STRING,
+    ReportingDate: DATETIME,
+    VersionText: STRING,
+    ProgrammeText: STRING,
+    BaselineText: STRING,
+    ControlCycleText: STRING
+) =>
+
+VAR HasProject =
+    NOT ISBLANK ( ProjectText )
+
+RETURN
+"Reporting context: "
+    & "Reporting date "
+    & FORMAT ( ReportingDate, "dd MMM yyyy" ) & ", "
+    & "file version "
+    & VersionText
+    & IF (
+        HasProject,
+        ", project " & ProjectText,
+        ""
+    )
+    & ". "
+    & IF (
+        NOT ISBLANK ( ProgrammeText ),
+        "The project forms part of the " & ProgrammeText & " programme. ",
+        ""
+    )
+    & IF (
+        NOT ISBLANK ( BaselineText ),
+        "Performance is assessed against the " & BaselineText & " baseline. ",
+        ""
+    )
+    & IF (
+        NOT ISBLANK ( ControlCycleText ),
+        "Reporting aligns to the " & ControlCycleText & " control cycle. ",
+        ""
+    )
