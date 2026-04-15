@@ -1,4 +1,10 @@
 # powerbi-project-reporting-narratives
+![Power BI](https://img.shields.io/badge/Power%20BI-DAX-yellow?logo=powerbi&logoColor=white)
+![DAX](https://img.shields.io/badge/DAX-User%20Defined%20Functions-blue)
+![Project Controls](https://img.shields.io/badge/Project%20Controls-PMO%20Focused-success)
+![Narrative Reporting](https://img.shields.io/badge/Narrative%20Reporting-Best%20Practice-informational)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Stable-brightgreen)
 
 A collection of DAX User‑Defined Functions (UDFs) and supporting measures designed to generate structured, professional project reporting narratives in Power BI.
 This repository focuses on project controls use cases, helping teams explain what the data means, not just what the numbers are.
